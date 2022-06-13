@@ -50,9 +50,9 @@ export default function Dialog({ sdk }: { sdk: DialogExtensionSDK }) {
         },
       })
       .then((r) => r.data as string[])
-      .then((_) => sdk.notifier.success(''))
+      .then((_) => sdk.notifier.success(successMsg))
       .catch((e) => {
-        setError(e.response?.message || e.message || e);
+        setError(`${failureMsg} \n ${e.response?.message || e.message || e}`);
       })
       .finally(() => {
         setLoading(false);
